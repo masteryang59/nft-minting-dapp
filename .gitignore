@@ -1,0 +1,24 @@
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Hardhat
+cache/
+artifacts/
+coverage/
+types/
+
+# Generated (npm run collection / deploy)
+frontend/public/collection/
+frontend/public/deployment.json
+frontend/dist/
+deployments/31337.json
+deployments/31337.args.js
+
+# Playwright
+e2e/.deployment/
+test-results/
+playwright-report/
+*.filter_items.tmp
+*.create_session.tmp
