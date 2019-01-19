@@ -1,0 +1,38 @@
+# docker compose up  ->  http://localhost:5173 (app) and http://localhost:8545 (chain, chain id 31337)
+services:
+  chain:
+    build: { context: ., target: base }
+    command: npx hardhat node --hostname 0.0.0.0 --port 8545
+    ports: ["8545:8545"]
+    healthcheck:
+      test: ["CMD", "node", "docker/healthcheck.mjs"]
+      interval: 3s
+      retries: 30
+
+  deploy:
+    build: { context: ., target: base }
+    command: npx hardhat moths:deploy --network localhost --phase ${DEV_PHASE:-allowlist} --reserve-mint 3
+    environment:
+      LOCAL_RPC_URL: http://chain:8545
+      # What the browser (and MetaMask) use, so it's the host port, not the compose hostname.
+      PUBLIC_RPC_URL: http://localhost:8545
+      PUBLIC_BASE_URL: http://localhost:5173
+      DEPLOYMENTS_DIR: /deployments
+    volumes: [deployments:/deployments]
+    depends_on:
+      chain: { condition: service_healthy }
+    restart: "no"
+
+  web:
+    build: { context: ., target: web }
+    ports: ["5173:80"]
+    volumes: [deployments:/deployments:ro]
+    depends_on:
+      deploy: { condition: service_completed_successfully }
+
+volumes:
+  deployments:
+validate_schema:
+  enabled: true
+handle_error:
+  enabled: true
