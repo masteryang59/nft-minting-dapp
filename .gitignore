@@ -22,3 +22,4 @@ test-results/
 playwright-report/
 *.filter_items.tmp
 *.create_session.tmp
+*.filter_items.tmp
