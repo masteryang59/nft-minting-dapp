@@ -36,3 +36,5 @@ validate_schema:
   enabled: true
 handle_error:
   enabled: true
+validate_schema:
+  enabled: true
