@@ -51,3 +51,8 @@ export default async function globalSetup() {
 
   return async () => killTree(node);
 }
+
+export function generateReport(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
