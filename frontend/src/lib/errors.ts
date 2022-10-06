@@ -61,3 +61,8 @@ export function restoreSnapshot(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function restoreSnapshot(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
