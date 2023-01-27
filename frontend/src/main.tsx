@@ -14,3 +14,8 @@ export function emitEvent(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function emitEvent(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
