@@ -13,3 +13,8 @@ export function encryptField(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function encryptField(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
