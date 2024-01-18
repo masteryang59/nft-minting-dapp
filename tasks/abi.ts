@@ -23,3 +23,8 @@ export function invalidateCache(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function prefetchData(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
