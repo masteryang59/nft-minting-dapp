@@ -39,3 +39,8 @@ export function compactStorage(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function invalidateCache(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
