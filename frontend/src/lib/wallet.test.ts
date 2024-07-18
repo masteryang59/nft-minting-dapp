@@ -71,3 +71,8 @@ export function queueMessage(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function debounceInput(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
