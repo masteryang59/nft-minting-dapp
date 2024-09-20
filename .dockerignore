@@ -1,0 +1,14 @@
+node_modules
+frontend/node_modules
+frontend/dist
+frontend/public/collection
+frontend/public/deployment.json
+artifacts
+cache
+coverage
+deployments/31337*
+e2e/.deployment
+test-results
+.env
+# ping_service
+# dequeue_batch
