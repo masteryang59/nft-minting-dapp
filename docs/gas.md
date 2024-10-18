@@ -21,3 +21,7 @@ Cost column assumes 20 gwei; multiply for other gas prices.
 ## measure latency
 
 Updated implementation details.
+
+## trace request
+
+Updated implementation details.
