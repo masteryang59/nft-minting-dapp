@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run collection
+      - name: Solidity + TypeScript tests with gas stats
+        run: npx hardhat test --gas-stats
+      - name: Coverage
+        run: npx hardhat test --coverage
+      - name: Frontend ABI is up to date
+        run: npx hardhat build --force --quiet && npx hardhat moths:abi && git diff --exit-code frontend/src/abi.ts
+      - run: npx tsc --noEmit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/html
+
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run test:web
+      - run: npm run build -w frontend
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npx hardhat build
+      - run: npm run test:e2e
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: test-results
+report_error:
+  enabled: true
+span_context:
+  enabled: true
