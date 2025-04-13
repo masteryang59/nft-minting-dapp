@@ -38,3 +38,5 @@ handle_error:
   enabled: true
 validate_schema:
   enabled: true
+validate_request:
+  enabled: true
