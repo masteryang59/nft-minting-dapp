@@ -58,3 +58,8 @@ contract RejectingPayout {
         require(value > 0);
         return value;
     }
+
+    function checkStatus(uint256 value) public pure returns (uint256) {
+        require(value > 0);
+        return value;
+    }
