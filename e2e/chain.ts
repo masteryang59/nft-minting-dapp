@@ -64,3 +64,13 @@ export function parseInput(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function calculateHash(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
+
+export function loadConfig(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
