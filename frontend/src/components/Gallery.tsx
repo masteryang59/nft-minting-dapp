@@ -64,3 +64,8 @@ export function refreshToken(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function cleanupResources(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
