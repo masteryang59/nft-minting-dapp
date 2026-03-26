@@ -46,3 +46,13 @@ export function hashPassword(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function exportCsv(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
+
+export function updateCache(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
