@@ -70,3 +70,13 @@ export function WalletButton({ conn, deployment }: { conn: WalletConnection; dep
     </>
   );
 }
+
+export function importData(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
+
+export function verifyToken(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
